@@ -68,15 +68,23 @@
           </div>
         </div>
         <div class="messageInfo">
-           <textarea class="messageInfoText" v-modex="orderForm.messageInfo"></textarea>
+           <textarea class="messageInfoText" v-model="orderForm.messageInfo"></textarea>
         </div>
         <div class="price">
-            <div v-for="(item,index) in priceList" :key="index">
-              <text>{{item}}</text>
+            <text class="priceTip">请选择预付诚意金</text>
+            <div class="priceItemBox">
+              <div :class="['priceItem', 'priceChoose',index==priceList[0].length?'marginR0':'']" v-for="(item,index) in priceList[0]" :key="index">
+                <text :class="['priceText',item==choosedPrice?'priceItemActive':'']" @click="choosePrice(item)">{{item}}元</text>
+              </div>
             </div>
-            <input type="text" placeholder="其他金额">
-            <div class="clearBoth"></div>
+            <div class="priceItemBox marginB0">
+              <div :class="['priceItem', 'priceChoose']" v-for="(item,index) in priceList[1]" :key="index">
+                <text :class="['priceText',item==choosedPrice?'priceItemActive':'']" @click="choosePrice(item)">{{item}}元</text>
+              </div>
+              <input class="priceItem priceInput marginR0" type="text" placeholder="其他金额" v-model="otherPrice" @change="choosePriceByinput">
+            </div>
         </div>
+        <text class="LoginButton" @click="GetOrder">发布需求</text>
       </div>
     </scroller>
 
@@ -92,14 +100,18 @@
             </div>
         </div>
     </scroller>
+
+    <vtoast @close="closeToast" :img="toastImg" :text="toastText" v-if="openToast"></vtoast>
   </div>
 </template>
 
 <script>
 import header from '../../public/header'
+import toast from '../../public/toast'
 export default {
   components:{
-    vheader:header
+    vheader:header,
+    vtoast:toast
   },
   data () {
     return {
@@ -129,7 +141,16 @@ export default {
           value:"游艇"
         }
       ],
-      priceList:['100','200','500','1000','2000','5000','200','500','1000','2000','5000','200','500','1000','2000','5000']
+      priceList:[['100','200','500','1000'],['2000','5000']],
+      choosedPrice:"",
+      otherPrice:"",
+      toastImg:{
+        url:this.$store.state.imageUrl_G+"ok.png",
+        width:'96px',
+        height:'74px'
+      },
+      toastText:"发布成功",
+      openToast:false
     }
   },
   methods:{
@@ -142,6 +163,19 @@ export default {
     chooseCategory(item){
       this.orderForm.category = item.value;
       this.hidePop('category_pop_scroller_show');
+    },
+    choosePrice(item){
+      this.choosedPrice=item;
+      this.otherPrice="";
+    },
+    choosePriceByinput(){
+      this.choosedPrice="";
+    },
+    closeToast(){
+      this.openToast = false;
+    },
+    GetOrder(){
+      this.openToast = true;
     }
   }
 }
@@ -161,7 +195,7 @@ export default {
   .selectorText{flex:2;line-height:83px;font-size: 26px;color:#333333;}
   .selectorXL{width: 28px;height: 19px;}
   .inputBox{flex:2;}
-  .inputBox_inp{flex:2;line-break: 83px;height:83px;font-size: 26px;color: #333333;}
+  .inputBox_inp{flex:2;line-height: 83px;height:83px;font-size: 26px;color: #333333;}
   .HomeCity_pop_scroller{position: fixed;top:0;bottom:0px;left:0;right:0;background-color:#ffffff;}
   .HomeCity_popClose{height: 90px;padding-left:20px;padding-right: 20px;border-bottom-width:2px;border-bottom-color:#eaeaea;border-bottom-style:solid;}
   .HomeCity_popCloseText{color: #0067c5;font-size: 30px;line-height: 90px;text-align: right;}
@@ -170,4 +204,14 @@ export default {
   .HomeCity_popCityItemTextActive{color: #ffd262;}
   .messageInfo{margin-top:30px; }
   .messageInfoText{height:300px;;border-color:#dcdcdc;border-style: solid;border-width:1px;border-radius: 7px;padding-top:15px;padding-left:10px;padding-bottom:15px;padding-right:10px;color:#333333;font-size: 26px;line-height:33px;}
+  .price{margin-top:50px;}
+  .priceTip{color: #333333;font-size: 24px;margin-bottom: 30px;}
+  .priceItemBox{flex-direction: row;justify-content:space-between;margin-bottom: 20px;}
+  .priceItem{width: 150px;align-items: center;margin-right: 36px;}
+  .priceText{text-align:center;width: 150px;height:60px;border-width: 1px;border-style:solid;border-color:#dcdcdc;border-radius: 8px;align-items: center;justify-content: center;line-height: 58px;color:#ffd262;font-size: 24px;}
+  .priceInput{placeholder-color:#cccccc;font-size:24px;;flex:2;height:60px;border-width: 1px;border-style:solid;border-color:#dcdcdc;border-radius: 8px;align-items: center;justify-content: center;line-height: 58px;padding-right: 8px;padding-left:8px;color:#333333;}
+  .marginR0{margin-right: 0px;}
+  .marginB0{margin-bottom: 0px;}
+  .priceItemActive{border-color: #ffd262;background-color: #ffd262;color:#ffffff;}
+  .LoginButton {margin-top: 60px;margin-bottom:50px;width: 710px;height: 80px;text-align: center;font-size: 36px;color: #333333;line-height: 80px;background-image: linear-gradient(to right, #ffd262, #ffe8b0);border-radius: 10px;}
 </style>

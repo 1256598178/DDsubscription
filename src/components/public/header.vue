@@ -22,7 +22,7 @@ export default {
     computed:{
         getprops(){
             return {
-                title:this.this,
+                title:this.title,
                 isshowFoot:this.isshowFoot
             }
         }
