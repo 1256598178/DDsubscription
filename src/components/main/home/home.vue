@@ -107,12 +107,12 @@ import dataMock from '@/mock/dataMock'
 export default {
     data () {
         return {
-            homeTopMoreCity_Img:"http://192.168.2.201:8082/images/morecity.png",
-            homeTopSearch_Img:"http://192.168.2.201:8082/images/homesearch.png",
-            homeTopMy_Img:"http://192.168.2.201:8082/images/hometopMy.png",
-            noticeImg:"http://192.168.2.201:8082/images/home_notice.png",
-            noticeText_infoBtn:"http://192.168.2.201:8082/images/home_noticeInfo.png",
-            eightBoxTitleImg:"http://192.168.2.201:8082/images/home_rightTitle.png",
+            homeTopMoreCity_Img:this.$store.state.imageUrl_G+"morecity.png",
+            homeTopSearch_Img:this.$store.state.imageUrl_G+"homesearch.png",
+            homeTopMy_Img:this.$store.state.imageUrl_G+"hometopMy.png",
+            noticeImg:this.$store.state.imageUrl_G+"home_notice.png",
+            noticeText_infoBtn:this.$store.state.imageUrl_G+"home_noticeInfo.png",
+            eightBoxTitleImg:this.$store.state.imageUrl_G+"home_rightTitle.png",
             homeTopSearchInp:"",
             HomeCity_pop_scroller_show:false,
             city:"上海",
@@ -120,10 +120,10 @@ export default {
             loadinging: false,//上拉加载
             bannerList:[
                 {
-                    url:"http://192.168.2.201:8082/images/home_banner1.png"
+                    url:this.$store.state.imageUrl_G+"home_banner1.png"
                 },
                 {
-                    url:"http://192.168.2.201:8082/images/home_banner1.png"
+                    url:this.$store.state.imageUrl_G+"home_banner1.png"
                 }
             ],
             noticeText_info:[
@@ -143,42 +143,42 @@ export default {
             noticeText_info_index:0,
             eightNavList:[
                 {
-                    img:"http://192.168.2.201:8082/images/home_eight1.png",
+                    img:this.$store.state.imageUrl_G+"home_eight1.png",
                     title:"KTV",
                     path:"ktv"
                 },
                 {
-                    img:"http://192.168.2.201:8082/images/home_eight2.png",
+                    img:this.$store.state.imageUrl_G+"home_eight2.png",
                     title:"酒吧",
                     path:"bar"
                 },
                 {
-                    img:"http://192.168.2.201:8082/images/home_eight3.png",
+                    img:this.$store.state.imageUrl_G+"home_eight3.png",
                     title:"游艇",
                     path:"yacht"
                 },
                 {
-                    img:"http://192.168.2.201:8082/images/home_eight4.png",
+                    img:this.$store.state.imageUrl_G+"home_eight4.png",
                     title:"别墅",
                     path:"house"
                 },
                 {
-                    img:"http://192.168.2.201:8082/images/home_eight5.png",
+                    img:this.$store.state.imageUrl_G+"home_eight5.png",
                     title:"养生",
                     path:"health"
                 },
                 {
-                    img:"http://192.168.2.201:8082/images/home_eight6.png",
+                    img:this.$store.state.imageUrl_G+"home_eight6.png",
                     title:"名酒",
                     path:"wine"
                 },
                 {
-                    img:"http://192.168.2.201:8082/images/home_eight7.png",
+                    img:this.$store.state.imageUrl_G+"home_eight7.png",
                     title:"团购",
                     path:"groupBuy"
                 },
                 {
-                    img:"http://192.168.2.201:8082/images/home_eight8.png",
+                    img:this.$store.state.imageUrl_G+"home_eight8.png",
                     title:"活动",
                     path:"activity"
                 },
@@ -186,25 +186,25 @@ export default {
             eightItemsList:{
                 "KTV":[
                         {
-                          img:"http://192.168.2.201:8082/images/home_img1.png",
+                          img:this.$store.state.imageUrl_G+"home_img1.png",
                           title:"王子公主奇遇记",
                           price:"¥350起",
                           path:"1234"
                         },
                         {
-                          img:"http://192.168.2.201:8082/images/home_img2.png",
+                          img:this.$store.state.imageUrl_G+"home_img2.png",
                           title:"MUSEK",
                           price:"¥230起",
                           path:"1234"
                         },
                         {
-                          img:"http://192.168.2.201:8082/images/home_img1.png",
+                          img:this.$store.state.imageUrl_G+"home_img1.png",
                           title:"王子公主奇遇记",
                           price:"¥350起",
                           path:"1234"
                         },
                         {
-                          img:"http://192.168.2.201:8082/images/home_img2.png",
+                          img:this.$store.state.imageUrl_G+"home_img2.png",
                           title:"MUSEK",
                           price:"¥230起",
                           path:"1234"
@@ -213,13 +213,13 @@ export default {
                     ],
                 "酒吧":[
                         {
-                          img:"http://192.168.2.201:8082/images/home_img3.png",
+                          img:this.$store.state.imageUrl_G+"home_img3.png",
                           title:"王子公主奇遇记",
                           price:"¥350起",
                           path:"1234"
                         },
                         {
-                          img:"http://192.168.2.201:8082/images/home_img4.png",
+                          img:this.$store.state.imageUrl_G+"home_img4.png",
                           title:"MUSEK",
                           price:"¥230起",
                           path:"1234"
@@ -227,13 +227,13 @@ export default {
                     ],
                 "游艇":[
                         {
-                          img:"http://192.168.2.201:8082/images/home_img5.png",
+                          img:this.$store.state.imageUrl_G+"home_img5.png",
                           title:"王子公主奇遇记",
                           price:"¥350起",
                           path:"1234"
                         },
                         {
-                          img:"http://192.168.2.201:8082/images/home_img6.png",
+                          img:this.$store.state.imageUrl_G+"home_img6.png",
                           title:"MUSEK",
                           price:"¥230起",
                           path:"1234"
@@ -241,13 +241,13 @@ export default {
                     ],
                 "别墅":[
                         {
-                          img:"http://192.168.2.201:8082/images/home_img7.png",
+                          img:this.$store.state.imageUrl_G+"home_img7.png",
                           title:"王子公主奇遇记",
                           price:"¥350起",
                           path:"1234"
                         },
                         {
-                          img:"http://192.168.2.201:8082/images/home_img8.png",
+                          img:this.$store.state.imageUrl_G+"home_img8.png",
                           title:"MUSEK",
                           price:"¥230起",
                           path:"1234"
@@ -256,19 +256,19 @@ export default {
             },
             homeManger:[
                 {
-                    img:"http://192.168.2.201:8082/images/home_jlr1.png",
+                    img:this.$store.state.imageUrl_G+"home_jlr1.png",
                     name:"钱某某",
                     hot:760,
                     path:675
                 },
                 {
-                    img:"http://192.168.2.201:8082/images/home_jlr2.png",
+                    img:this.$store.state.imageUrl_G+"home_jlr2.png",
                     name:"赵某某",
                     hot:760,
                     path:676
                 },
                 {
-                    img:"http://192.168.2.201:8082/images/home_jlr2.png",
+                    img:this.$store.state.imageUrl_G+"home_jlr2.png",
                     name:"赵某某",
                     hot:760,
                     path:676

@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <header :title="header_title"></header>
+    <vheader :title="header_title"></vheader>
     <div class="mainContain">
       <text class="textinfo">请输入您的新密码，密码格式为6-8位，由大写字母、小写字母、数字构成</text>
       <div class="sec1">
@@ -26,12 +26,12 @@
 import header from '../public/header'
 export default {
   components:{
-    header
+    vheader:header
   },
   data(){
     return{
       header_title:'设置新密码',
-      password_img: "http://192.168.2.201:8082/images/Login_ico_mm.png"
+      password_img: this.$store.state.imageUrl_G+"Login_ico_mm.png"
     }
   },
   methods:{

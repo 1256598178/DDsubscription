@@ -8,7 +8,7 @@
 export default {
   data () {
     return {
-      helloPage:'http://192.168.2.201:8082/images/helloPage.png',
+      helloPage:this.$store.state.imageUrl_G+'helloPage.png',
       toHomeTime:null
     }
   },

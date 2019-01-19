@@ -38,7 +38,7 @@
             {
                 title: '我的',
                 iconText: '\ue61b',
-                path: 'my'
+                path: 'login'
             }]
       }
     },
@@ -110,6 +110,7 @@
     color: #cccccc;
 }
 .nav-cn-active {
-    color: #ffde8d;
+    /* color: #ffde8d; */
+    color: #000000;
 }
 </style>

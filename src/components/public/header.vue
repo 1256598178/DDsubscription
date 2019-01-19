@@ -6,15 +6,37 @@
 </template>
 
 <script>
+import BusFn from '@/components/public/BusFn.js'
 export default {
-    props:['title'],
+    props:{
+        // 顶部标题
+        title:{
+            type:String
+        },
+        // 点击回退时，是否显示main底部导航，true：显示
+        isshowFoot:{
+            type:Boolean,
+            default:false
+        }
+    },
+    computed:{
+        getprops(){
+            return {
+                title:this.this,
+                isshowFoot:this.isshowFoot
+            }
+        }
+    },
     data(){
         return{
-            headerBox_G_toBack:'http://192.168.2.201:8082/images/toBack.png'
+            headerBox_G_toBack:this.$store.state.imageUrl_G+'toBack.png'
         }
     },
     methods:{
         toBack_G(){
+            if(this.getprops.isshowFoot==true){
+                BusFn.mainFootShow_Fn();
+            }
             this.$router.back(-1);
         }
     }

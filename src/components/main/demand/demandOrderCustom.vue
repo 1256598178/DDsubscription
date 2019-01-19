@@ -1,21 +1,23 @@
 <template>
   <div class="wrapper">
-    <text @click="toBack_G">返回上一页</text>
-    <text>发布订制需求</text>
+    <!-- 发布定制需求 -->
+    <header :title="header_title" :isshowFoot="true"></header>
   </div>
 </template>
 
 <script>
+import header from '../../public/header'
 export default {
+  components:{
+    header:header
+  },
   data () {
     return {
-
+      header_title:"发布定制需求"
     }
   },
   methods:{
-    toBack_G(){
-        this.$router.back(-1);
-    }
+    
   }
 }
 </script>

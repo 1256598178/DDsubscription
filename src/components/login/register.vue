@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <v-header :title="header_title"></v-header>
+    <vheader :title="header_title"></vheader>
     <div class="mainContain">
       <text class="textinfo">请输入您的常用手机号码</text>
       <div class="sec1">
@@ -35,13 +35,13 @@
 import header from '../public/header'
 export default {
   components:{
-    'v-header':header
+    'vheader':header
   },
   data(){
     return{
       header_title:'用户注册',
-      password_img: "http://192.168.2.201:8082/images/Login_ico_mm.png",
-      phone_img: "http://192.168.2.201:8082/images/Login_ico_phone.png",
+      password_img: this.$store.state.imageUrl_G+"Login_ico_mm.png",
+      phone_img: this.$store.state.imageUrl_G+"Login_ico_phone.png",
       getCodeFlg:1, //1:点击后触发函数 0:点击后不触发函数
       getCodeText:'获取验证码',
       sendTime:null,

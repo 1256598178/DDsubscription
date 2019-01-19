@@ -47,11 +47,11 @@
 export default {
   data() {
     return {
-      LoginBg_img: "http://192.168.2.201:8082/images/Login_bg.png",
-      LoginLogo_img: "http://192.168.2.201:8082/images/Login_logo.png",
-      username_img: "http://192.168.2.201:8082/images/Login_ico_yym.png",
-      password_img: "http://192.168.2.201:8082/images/Login_ico_mm.png",
-      wxlogin_img: "http://192.168.2.201:8082/images/Login_wx.png",
+      LoginBg_img: this.$store.state.imageUrl_G+"Login_bg.png",
+      LoginLogo_img: this.$store.state.imageUrl_G+"Login_logo.png",
+      username_img: this.$store.state.imageUrl_G+"Login_ico_yym.png",
+      password_img: this.$store.state.imageUrl_G+"Login_ico_mm.png",
+      wxlogin_img: this.$store.state.imageUrl_G+"Login_wx.png",
       loginData:{
         username:'',
         password:''
