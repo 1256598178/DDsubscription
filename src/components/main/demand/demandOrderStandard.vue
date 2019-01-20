@@ -73,7 +73,7 @@
         <div class="price">
             <text class="priceTip">请选择预付诚意金</text>
             <div class="priceItemBox">
-              <div :class="['priceItem', 'priceChoose',index==priceList[0].length?'marginR0':'']" v-for="(item,index) in priceList[0]" :key="index">
+              <div :class="['priceItem', 'priceChoose',index==priceList[0].length-1?'marginR0':'']" v-for="(item,index) in priceList[0]" :key="index">
                 <text :class="['priceText',item==choosedPrice?'priceItemActive':'']" @click="choosePrice(item)">{{item}}元</text>
               </div>
             </div>
@@ -210,8 +210,8 @@ export default {
   .priceItem{width: 150px;align-items: center;margin-right: 36px;}
   .priceText{text-align:center;width: 150px;height:60px;border-width: 1px;border-style:solid;border-color:#dcdcdc;border-radius: 8px;align-items: center;justify-content: center;line-height: 58px;color:#ffd262;font-size: 24px;}
   .priceInput{placeholder-color:#cccccc;font-size:24px;;flex:2;height:60px;border-width: 1px;border-style:solid;border-color:#dcdcdc;border-radius: 8px;align-items: center;justify-content: center;line-height: 58px;padding-right: 8px;padding-left:8px;color:#333333;}
-  .marginR0{margin-right: 0px;}
-  .marginB0{margin-bottom: 0px;}
   .priceItemActive{border-color: #ffd262;background-color: #ffd262;color:#ffffff;}
   .LoginButton {margin-top: 60px;margin-bottom:50px;width: 710px;height: 80px;text-align: center;font-size: 36px;color: #333333;line-height: 80px;background-image: linear-gradient(to right, #ffd262, #ffe8b0);border-radius: 10px;}
+  .marginR0{margin-right:0px;}
+  .marginB0{margin-bottom: 0px;}
 </style>
