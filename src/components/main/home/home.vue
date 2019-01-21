@@ -297,7 +297,7 @@ export default {
       var fontModule = weex.requireModule("dom");
       fontModule.addRule('fontFace', {
           'fontFamily': "iconfont",
-          'src': "url('//at.alicdn.com/t/font_1005984_w2hc8tsdv5g.ttf')"
+          'src': 'url('+this.$store.state.iconUrl+')'
       })
     },
     methods:{

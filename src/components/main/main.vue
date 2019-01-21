@@ -1,12 +1,12 @@
 <template>
   <div class="wrapper">
-    <router-view/>
     <div class="Foot" v-if="footShow">
         <div class="Foot-list" v-for="(item,index) of nav" :key="index" @click="jump(item.path)">
             <text :class="['iconFont',navIndex == item.path ? 'nav-cn-active' : 'nav-cn']">{{item.iconText}}</text>
             <text :class="['font-text',navIndex == item.path ? 'nav-cn-active' : 'nav-cn']">{{item.title}}</text>
         </div>
     </div>
+    <router-view/>
   </div>
 </template>
 <script>
@@ -55,7 +55,7 @@
       var fontModule = weex.requireModule("dom");
       fontModule.addRule('fontFace', {
           'fontFamily': "iconfont",
-          'src': "url('//at.alicdn.com/t/font_1005984_mbwdwds3d5.ttf')"
+          'src': 'url('+this.$store.state.iconUrl+')'
       })
     },
     mounted(){
