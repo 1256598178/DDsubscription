@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper">
-    <text>activity</text>
+    <!-- <text>activity</text> -->
+    <router-view />
   </div>
 </template>
 

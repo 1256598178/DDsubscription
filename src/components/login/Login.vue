@@ -34,7 +34,7 @@
         </div>
         <div class="otherLogins">
           <div class="otherLogin_item">
-            <image :src="wxlogin_img" style="width:84px;height:84px"></image>
+            <image :src="wxlogin_img" style="width:84px;height:84px" @click="wxLogin"></image>
           </div>
         </div>
       </div>
@@ -43,7 +43,8 @@
 </template>
 
 <script>
-
+import Util from '@/components/public/utils.js'
+import Storage from '@/components/public/storage.js'
 export default {
   data() {
     return {
@@ -52,6 +53,7 @@ export default {
       username_img: this.$store.state.imageUrl_G+"Login_ico_yym.png",
       password_img: this.$store.state.imageUrl_G+"Login_ico_mm.png",
       wxlogin_img: this.$store.state.imageUrl_G+"Login_wx.png",
+			ajaxUrl:'api/action/partinaction',
       loginData:{
         username:'',
         password:''
@@ -70,6 +72,31 @@ export default {
       // todo 登录验证接口
       return true;
     },
+		wxLogin(){
+			Util.WeexAjax({
+			    url: this.ajaxUrl,
+			    method: 'GET',
+			    type: 'JSON',
+			    callback: function(ret) {
+			        // let rets = Util.JsonFormat(ret);
+			        if (ret.Status == 0) {
+			            self.loginTip = ret.Message;
+			        } else if (ret.Status == 1) {
+			            console.log(ret)
+			            Storage.setItems({
+			                'user_token': ret.obj.Token,
+			                'user_id': ret.obj.UserId
+			            })
+			            Util.NavigatUrl({
+			                message: '登录成功',
+			                duration: 1,
+			                //urls: 'components/my/my.js',
+			                //_this: self.$getConfig()
+			            })
+			        }
+			    }
+			}) 
+		},
     toHome(){
       if(this.validator_login()){
         this.storage.setItem('comingNight_login',JSON.stringify(this.loginData))

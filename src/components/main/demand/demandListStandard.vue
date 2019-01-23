@@ -468,6 +468,8 @@
 import stars from '../../public/stars.vue'
 import appraise from '../../public/appraise.vue'
 import Bus from '@/components/public/Bus.js'
+import Util from '@/components/public/utils.js'
+import Storage from '@/components/public/storage.js'
 export default {
   components:{
     vstars:stars,
@@ -476,6 +478,7 @@ export default {
   data () {
     return {
       appraiseShow:false,
+			ajaxUrl:'api/demand/getdemandlist',
       oderListImg:{
         update:this.$store.state.imageUrl_G+"oderList1.png",
         category:this.$store.state.imageUrl_G+"oderList2.png",
@@ -522,7 +525,32 @@ export default {
     Bus.$on('appraiseShowToFalse',function(){
       _this.appraiseShow=false;
     })
-  }
+  },
+	created() {
+		Util.WeexAjax({
+		    url: this.ajaxUrl+'?Page=1&PageSize=10&TypeId=0',
+		    method: 'GET',
+		    type: 'JSON',
+		    callback: function(ret) {
+		        // let rets = Util.JsonFormat(ret);
+		        if (ret.Status == 0) {
+		            self.loginTip = ret.Message;
+		        } else if (ret.Status == 1) {
+		            console.log(ret)
+		            Storage.setItems({
+		                'user_token': ret.obj.Token,
+		                'user_id': ret.obj.UserId
+		            })
+		            Util.NavigatUrl({
+		                message: '登录成功',
+		                duration: 1,
+		                //urls: 'components/my/my.js',
+		                //_this: self.$getConfig()
+		            })
+		        }
+		    }
+		}) 
+	}
 }
 </script>
 

@@ -38,7 +38,7 @@
             {
                 title: '我的',
                 iconText: '\ue61b',
-                path: 'login'
+                path: 'my'
             }]
       }
     },

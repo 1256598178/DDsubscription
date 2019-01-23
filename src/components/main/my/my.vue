@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper">
-    <text>my</text>
+    <!-- <text>my</text> -->
+    <router-view />
   </div>
 </template>
 

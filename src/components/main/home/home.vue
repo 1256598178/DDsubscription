@@ -104,6 +104,8 @@
 <script>
 import BusFn from '@/components/public/BusFn.js'
 import dataMock from '@/mock/dataMock'
+import Util from '@/components/public/utils.js'
+import Storage from '@/components/public/storage.js'
 export default {
     data () {
         return {
@@ -116,6 +118,7 @@ export default {
             homeTopSearchInp:"",
             HomeCity_pop_scroller_show:false,
             city:"上海",
+			ajaxUrl:'api/account/wxLogin',
             refreshing: false,//下拉刷新
             loadinging: false,//上拉加载
             bannerList:[

@@ -15,8 +15,27 @@ import demandOrderStandard from '@/components/main/demand/demandOrderStandard'
 import demandOrderCustom from '@/components/main/demand/demandOrderCustom'
 
 import my from '@/components/main/my/my'
+import myIndex from '@/components/main/my/myIndex'
+import InviteFriends from '@/components/main/my/InviteFriends'
+import personlInfo from '@/components/main/my/personlInfo'
+import ResultsWithdrawals from '@/components/main/my/ResultsWithdrawals'
+import withdrawal from '@/components/main/my/withdrawal'
+import AboutUs from '@/components/main/my/AboutUs'
+import AccountBalance from '@/components/main/my/AccountBalance'
+import BalanceIncome from '@/components/main/my/BalanceIncome'
+import BalanceSpending from '@/components/main/my/BalanceSpending'
+import MyStock from '@/components/main/my/MyStock'
+import TakeOutStock from '@/components/main/my/TakeOutStock'
+
 import friends from '@/components/main/friends/friends'
+import MyAttention from '@/components/main/friends/MyAttention'
+import RecentNews from '@/components/main/friends/RecentNews'
+
 import activity from '@/components/main/activity/activity'
+import actdet from '@/components/main/activity/actdet'
+import MyActivities from '@/components/main/activity/MyActivities'
+import MyEnterActivities from '@/components/main/activity/MyEnterActivities'
+import MyEnterActivitiesNotBegin from '@/components/main/activity/MyEnterActivitiesNotBegin'
 
 
 Vue.use(Router)
@@ -62,7 +81,65 @@ const router = new Router({
         {
           path: 'my',
           name: 'my',
-          component: my
+          component: my,
+          redirect:'/main/my/myIndex',
+          children:[
+            {
+              path: 'myIndex',
+              name: 'myIndex',
+              component: myIndex,
+            },
+            {
+              path: 'personlInfo',
+              name: 'personlInfo',
+              component: personlInfo,
+            },
+            {
+              path: 'InviteFriends',
+              name: 'InviteFriends',
+              component: InviteFriends,
+            },
+            {
+              path: 'AboutUs',
+              name: 'AboutUs',
+              component: AboutUs,
+            },
+            {
+              path: 'MyStock',
+              name: 'MyStock',
+              component: MyStock,
+            },
+            {
+              path: 'AccountBalance',
+              name: 'AccountBalance',
+              component: AccountBalance,
+            },
+            {
+              path: 'BalanceIncome',
+              name: 'BalanceIncome',
+              component: BalanceIncome,
+            },
+            {
+              path: 'BalanceSpending',
+              name: 'BalanceSpending',
+              component: BalanceSpending,
+            },
+            {
+              path: 'withdrawal',
+              name: 'withdrawal',
+              component: withdrawal,
+            },
+            {
+              path: 'ResultsWithdrawals',
+              name: 'ResultsWithdrawals',
+              component: ResultsWithdrawals,
+            },
+            {
+              path: 'TakeOutStock',
+              name: 'TakeOutStock',
+              component: TakeOutStock,
+            }
+          ]
         },
         {
           path: 'demand',
@@ -103,12 +180,47 @@ const router = new Router({
         {
           path: 'friends',
           name: 'friends',
-          component: friends
+          component: friends,
+          redirect:'/main/friends/RecentNews',
+          children:[
+            {
+              path:'MyAttention',
+              name:'MyAttention',
+              component:MyAttention
+            },
+            {
+              path:'RecentNews',
+              name:'RecentNews',
+              component:RecentNews
+            }
+          ]
         },
         {
           path: 'activity',
           name: 'activity',
-          component: activity
+          component: activity,
+					redirect:'/main/activity/MyActivities',
+					children:[
+						{
+							path:'MyActivities',
+					    name:'MyActivities',
+					    component:MyActivities
+						},{
+							path:'MyEnterActivities',
+					    name:'MyEnterActivities',
+					    component:MyEnterActivities
+            },
+            {
+							path:'MyEnterActivitiesNotBegin',
+					    name:'MyEnterActivitiesNotBegin',
+					    component:MyEnterActivitiesNotBegin
+            },
+            {
+							path:'actdet',
+					    name:'actdet',
+					    component:actdet
+						}
+					]
         }
       ]
     }
